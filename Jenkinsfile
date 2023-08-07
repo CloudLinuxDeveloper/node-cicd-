@@ -8,7 +8,7 @@ pipeline {
         }
         stage("Build and Test"){
             steps{
-                sh "docker build . -t node-cicd-"
+                sh "docker build . -t myweb"
             }
         }
         //stage("Push to Docker Hub"){
