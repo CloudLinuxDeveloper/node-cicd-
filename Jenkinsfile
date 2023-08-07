@@ -11,15 +11,15 @@ pipeline {
                 sh "docker build . -t node-cicd-"
             }
         }
-        stage("Push to Docker Hub"){
-            steps{
-                withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
-                sh "docker tag nodeapp ${env.dockerHubUser}/node-cicd-:latest"
-                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                sh "docker push ${env.dockerHubUser}/node-cicd-:latest"
-                }
-            }
-        }
+        //stage("Push to Docker Hub"){
+            //steps{
+               // withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
+                //sh "docker tag nodeapp ${env.dockerHubUser}/node-cicd-:latest"
+                //sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                //sh "docker push ${env.dockerHubUser}/node-cicd-:latest"
+                //}
+            //}
+        //}
         stage("Deploy"){
             steps{
                 sh "docker-compose down && docker-compose up -d"
