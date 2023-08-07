@@ -1,5 +1,5 @@
 pipeline {
-    agent { label "dev-server" }
+    agent { label "ip-172-31-92-113" }
     stages{
         stage("Clone Code"){
             steps{
